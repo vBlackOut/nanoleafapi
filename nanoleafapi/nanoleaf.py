@@ -227,7 +227,7 @@ class Nanoleaf():
     ####                   COLOUR                      ####
     #######################################################
 
-    def set_color(self, r: int, g: int, b: int, br: int) -> bool:
+    def set_color(self, r: int, g: int, b: int, br: int =-1) -> bool:
         """Sets the colour of the lights
 
         :param rgb: Tuple in the format (r, g, b)
