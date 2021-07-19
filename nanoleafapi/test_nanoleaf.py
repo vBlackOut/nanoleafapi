@@ -21,9 +21,9 @@ class TestNanoleafMethods(unittest.TestCase):
         self.assertTrue(self.nl.toggle_power())
 
     def test_set_color(self):
-        self.assertTrue(self.nl.set_color((255, 255, 255, -1)))
-        self.assertFalse(self.nl.set_color((255, 255, 276, -1)))
-        self.assertFalse(self.nl.set_color((255, 255, -234, -1)))
+        self.assertTrue(self.nl.set_color(255, 255, 255, -1))
+        self.assertFalse(self.nl.set_color(255, 255, 276, -1))
+        self.assertFalse(self.nl.set_color(255, 255, -234, -1))
 
     def test_set_brightness(self):
         self.assertTrue(self.nl.set_brightness(100))
