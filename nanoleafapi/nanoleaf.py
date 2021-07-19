@@ -227,20 +227,20 @@ class Nanoleaf():
     ####                   COLOUR                      ####
     #######################################################
 
-    def set_color(self, rgb : Tuple[int, int, int, int]) -> bool:
+    def set_color(self, r: int, g: int, b: int, br: int) -> bool:
         """Sets the colour of the lights
 
         :param rgb: Tuple in the format (r, g, b)
 
         :returns: True if successful, otherwise False
         """
-        hsv_colour = colorsys.rgb_to_hsv(rgb[0]/255, rgb[1]/255, rgb[2]/255)
+        hsv_colour = colorsys.rgb_to_hsv(r/255, g/255, b/255)
         hsv_colour_list = list(hsv_colour)
         hsv_colour_list[0] *= 360
         hsv_colour_list[1] *= 100
         hsv_colour_list[2] *= 100
         final_colour = [ int(x) for x in hsv_colour_list ]
-        if rgb[3] == -1:
+        if br == -1:
             data = {
                         "hue" : {"value": final_colour[0]},
                         "sat": {"value": final_colour[1]},
@@ -250,7 +250,7 @@ class Nanoleaf():
             data = {
                         "hue" : {"value": final_colour[0]},
                         "sat": {"value": final_colour[1]},
-                        "brightness": {"value": rgb[3], "duration": 0}
+                        "brightness": {"value": br, "duration": 0}
                     }
         response = requests.put(self.url + "/state", data=json.dumps(data))
         return self.__error_check(response.status_code)
